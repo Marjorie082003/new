@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Facebook Marketplace</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+        }
+        .navbar {
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            color: #1877f2;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+        .search-bar {
+            background-color: #f0f2f5;
+            border-radius: 50px;
+            padding: 8px 12px;
+            margin-left: 10px;
+            border: none;
+            flex-grow: 1;
+            max-width: 500px;
+        }
+        .container {
+            padding: 20px;
+        }
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .sell-btn {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .sell-btn:hover {
+            background-color: #166fe5;
+        }
+        .categories {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+        }
+        .category {
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px 15px;
+            white-space: nowrap;
+            cursor: pointer;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .category.active {
+            background-color: #e7f3ff;
+            color: #1877f2;
+        }
+        .marketplace-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .listing-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .listing-item:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .listing-image {
+            height: 200px;
+            background-color: #e4e6e9;
+        }
+        .listing-details {
+            padding: 12px;
+        }
+        .listing-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .listing-price {
+            color: #1877f2;
+            font-weight: bold;
+        }
+        .listing-location {
+            color: #65676b;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 1024px) {
+            .marketplace-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            .marketplace-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            .listing-image {
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .navbar {
+                padding: 10px;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .search-bar {
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+            .container {
+                padding: 10px;
+            }
+            .marketplace-grid {
+                grid-template-columns: 1fr;
+            }
+            .listing-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo" onclick="window.location.href='newsfeed.html'">facebook</div>
+        <input type="text" class="search-bar" placeholder="Search Marketplace">
+    </div>
+    
+    <div class="container">
+        <div class="page-header">
+            <div class="page-title">Marketplace</div>
+            <button class="sell-btn">+ Sell</button>
+        </div>
+        
+        <div class="categories">
+            <div class="category active">All items</div>
+            <div class="category">Vehicles</div>
+            <div class="category">Property rentals</div>
+            <div class="category">Apparel</div>
+            <div class="category">Classifieds</div>
+            <div class="category">Electronics</div>
+            <div class="category">Family</div>
+            <div class="category">Free stuff</div>
+            <div class="category">Garden</div>
+            <div class="category">Hobbies</div>
+        </div>
+        
+        <div class="marketplace-grid">
+            <!-- Item 1 -->
+            <div class="listing-item" onclick="window.location.href='#'">
+                <div class="listing-image"></div>
+                <div class="listing-details">
+                    <div class="listing-title">iPhone 13 Pro - 128GB - Excellent condition</div>
+                    <div class="listing-price">$799</div>
+                    <div class="listing-location">New York, NY</div>
+                </div>
+            </div>
+            
+            <!-- Item 2 -->
+            <div class="listing-item" onclick="window.location.href='#'">
+                <div class="listing-image"></div>
+                <div class="listing-details">
+                    <div class="listing-title">Leather Sofa - Brown - Like new</div>
+                    <div class="listing-price">$350</div>
+                    <div class="listing-location">Brooklyn, NY</div>
+                </div>
+            </div>
+            
+            <!-- Item 3 -->
+            <div class="listing-item" onclick="window.location.href='#'">
+                <div class="listing-image"></div>
+                <div class="listing-details">
+                    <div class="listing-title">Mountain Bike - 21 speed - Great condition</div>
+                    <div class="listing-price">$120</div>
+                    <div class="listing-location">Queens, NY</div>
+                </div>
+            </div>
+            
+            <!-- Item 4 -->
+            <div class="listing-item" onclick="window.location.href='#'">
+                <div class="listing-image"></div>
+                <div class="listing-details">
+                    <div class="listing-title">Coffee Table - Modern design - White</div>
+                    <div class="listing-price">$75</div>
+                    <div class="listing-location">Manhattan, NY</div>
+                </div>
+            </div>
+            
+            <!-- Item 5 -->
+            <div class="listing-item" onclick="window.location.href='#'">
+                <div class="listing-image"></div>
+                <div class="listing-details">
+                    <div class="listing-title">Canon 50mm f/1.8 Lens - Perfect condition</div>
+                    <div class="listing-price">$250</div>
+                    <div class="listing-location">Bronx, NY</div>
+                </div>
+            </div>
+            
+            <!-- Item 6 -->
+            <div class="listing-item" onclick="window.location.href='#'">
+                <div class="listing-image"></div>
+                <div class="listing-details">
+                    <div class="listing-title">Wooden Bookshelf - 5 shelves - Sturdy</div>
+                    <div class="listing-price">$60</div>
+                    <div class="listing-location">Staten Island, NY</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
